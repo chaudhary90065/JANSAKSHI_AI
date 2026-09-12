@@ -1,0 +1,215 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #FF6B35;
+  --color-secondary: #004D7A;
+  --color-accent: #00A86B;
+  --color-warning: #FFA500;
+  --color-danger: #DC2626;
+  --color-neutral: #F3F4F6;
+  --color-success: #10B981;
+  --color-ink: #1F2937;       /* main body text - always dark, never inherits white */
+  --color-muted: #6B7280;     /* secondary/paragraph text */
+  --font-poppins: var(--font-poppins), sans-serif;
+  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --shadow-hover: 0 8px 16px rgba(0, 0, 0, 0.12);
+  --radius-xl: 12px;
+  --radius-2xl: 16px;
+}
+
+/* ============================================
+   Global Styles
+   ============================================ */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-neutral text-ink antialiased;
+  /* text color explicitly set here — this is what fixes the
+     "white text everywhere" bug. Previously body had no text
+     color, so it silently inherited white from the dark-mode
+     media query below onto every element, including cards. */
+}
+
+/* ============================================
+   Typography
+   ============================================ */
+h1, h2, h3, h4, h5, h6 {
+  @apply font-poppins font-semibold text-ink;
+  letter-spacing: -0.01em;
+}
+
+h1 { @apply text-4xl md:text-5xl leading-tight; }
+h2 { @apply text-3xl md:text-4xl leading-tight; }
+h3 { @apply text-2xl md:text-3xl; }
+
+p {
+  @apply leading-relaxed text-muted;
+}
+
+a {
+  @apply text-secondary hover:text-primary transition;
+}
+
+/* ============================================
+   Forms
+   ============================================ */
+input,
+textarea,
+select {
+  @apply transition duration-200 text-ink bg-white border border-gray-300 rounded-lg px-4 py-2.5;
+}
+
+input::placeholder,
+textarea::placeholder {
+  @apply text-gray-400;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  @apply outline-none ring-2 ring-primary/40 border-primary;
+}
+
+label {
+  @apply text-ink font-medium text-sm mb-1 block;
+}
+
+/* ============================================
+   Animations
+   ============================================ */
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-20px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes pulseSoft {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.6; }
+}
+
+.animate-slideUp     { animation: slideUp 0.5s ease-out; }
+.animate-fadeIn       { animation: fadeIn 0.3s ease-out; }
+.animate-slideInLeft  { animation: slideInLeft 0.5s ease-out; }
+.animate-pulseSoft    { animation: pulseSoft 2s ease-in-out infinite; }
+
+/* ============================================
+   Scrollbar
+   ============================================ */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { @apply bg-neutral; }
+::-webkit-scrollbar-thumb { @apply bg-primary rounded-full; }
+::-webkit-scrollbar-thumb:hover { @apply bg-orange-600; }
+
+/* ============================================
+   Buttons
+   ============================================ */
+.btn-primary {
+  @apply bg-primary text-white font-semibold px-6 py-3 rounded-lg
+         hover:bg-orange-600 active:scale-[0.98] transition-all
+         shadow-sm hover:shadow-md;
+}
+
+.btn-secondary {
+  @apply bg-secondary text-white font-semibold px-6 py-3 rounded-lg
+         hover:bg-blue-900 active:scale-[0.98] transition-all
+         shadow-sm hover:shadow-md;
+}
+
+.btn-outline {
+  @apply border-2 border-primary text-primary font-semibold px-6 py-3 rounded-lg
+         hover:bg-primary hover:text-white active:scale-[0.98] transition-all;
+}
+
+.btn-ghost {
+  @apply text-ink font-medium px-6 py-3 rounded-lg
+         hover:bg-gray-100 transition;
+}
+
+/* ============================================
+   Cards
+   ============================================ */
+.card {
+  @apply bg-white rounded-xl shadow-card hover:shadow-hover transition p-6 text-ink;
+}
+
+.card-stat {
+  @apply bg-white rounded-2xl shadow-card p-6 flex flex-col gap-2 border border-gray-100;
+}
+
+/* ============================================
+   Badges / Status Pills (great for complaint status)
+   ============================================ */
+.badge {
+  @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold;
+}
+
+.badge-primary { @apply bg-primary/15 text-primary; }
+.badge-success { @apply bg-accent/15 text-accent; }
+.badge-warning { @apply bg-warning/15 text-yellow-700; }
+.badge-danger  { @apply bg-danger/15 text-danger; }
+
+/* semantic status pills for complaint tracking */
+.status-pending    { @apply bg-warning/15 text-yellow-700; }
+.status-progress   { @apply bg-secondary/15 text-secondary; }
+.status-resolved   { @apply bg-accent/15 text-accent; }
+.status-rejected   { @apply bg-danger/15 text-danger; }
+
+/* ============================================
+   Section / Layout helpers
+   ============================================ */
+.section {
+  @apply py-16 md:py-24 px-4 md:px-8;
+}
+
+.container-narrow {
+  @apply max-w-4xl mx-auto;
+}
+
+.gradient-hero {
+  background: linear-gradient(135deg, var(--color-secondary) 0%, #003354 100%);
+}
+
+.gradient-primary-soft {
+  background: linear-gradient(135deg, rgba(255,107,53,0.08) 0%, rgba(0,168,107,0.06) 100%);
+}
+
+/* ============================================
+   Responsive Typography
+   ============================================ */
+@media (max-width: 768px) {
+  h1 { @apply text-3xl; }
+  h2 { @apply text-2xl; }
+  h3 { @apply text-xl; }
+}
+
+/* ============================================
+   Dark Mode — REMOVED for hackathon build
+   ============================================
+   Reason: a blanket `prefers-color-scheme: dark` block that sets
+   `body { text-white }` was the cause of the original bug — any
+   component using a white/light background (cards, inputs, modals)
+   didn't override text color, so text became invisible.
+   For a hackathon timeline, ship one polished light theme instead
+   of a half-supported dark mode. If you want dark mode later, do it
+   with a `.dark` class + explicit text color on every component
+   (card, input, badge) rather than a media query on body alone. */
+
+/* ============================================
+   Print Styles
+   ============================================ */
+@media print {
+  .no-print { display: none; }
+  body { @apply bg-white text-ink; }
+}

@@ -1,0 +1,193 @@
+@import url("https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700&family=Mukta:wght@400;500;600&display=swap");
+
+.jb-page {
+  --jb-paper: #f1edda;
+  --jb-ink: #262218;
+  --jb-indigo: #1c2c4c;
+  --jb-marigold: #dd8f2e;
+  --jb-marigold-dark: #a8631a;
+  --jb-teal: #2c6a58;
+  --jb-teal-dark: #1c4739;
+  --jb-line: #d9d2b8;
+
+  background: var(--jb-paper);
+  color: var(--jb-ink);
+  font-family: "Mukta", "Noto Sans Devanagari", sans-serif;
+  padding: 48px 24px 80px;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.jb-header {
+  margin-bottom: 32px;
+}
+
+.jb-title {
+  font-family: "Baloo 2", "Noto Sans Devanagari", sans-serif;
+  font-weight: 700;
+  font-size: 2.1rem;
+  color: var(--jb-indigo);
+  margin: 0 0 8px;
+}
+
+.jb-subtitle {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #55503f;
+  margin: 0;
+  max-width: 60ch;
+}
+
+.jb-track-switch {
+  display: inline-flex;
+  border: 1px solid var(--jb-line);
+  border-radius: 999px;
+  padding: 4px;
+  margin-bottom: 40px;
+  background: #fbf9f0;
+}
+
+.jb-tab {
+  font-family: "Mukta", sans-serif;
+  font-weight: 600;
+  font-size: 0.9rem;
+  border: none;
+  background: transparent;
+  padding: 8px 18px;
+  border-radius: 999px;
+  cursor: pointer;
+  color: #6b6552;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.jb-tab--active {
+  background: var(--jb-indigo);
+  color: #fff;
+}
+
+.jb-ladder {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+.jb-ladder::before {
+  content: "";
+  position: absolute;
+  left: 19px;
+  top: 8px;
+  bottom: 8px;
+  width: 2px;
+  background: var(--jb-line);
+}
+
+.jb-rung {
+  position: relative;
+  display: flex;
+  gap: 20px;
+  padding: 0 0 36px 0;
+}
+
+.jb-rung:last-child {
+  padding-bottom: 0;
+}
+
+.jb-rung-marker {
+  flex: 0 0 auto;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid var(--jb-line);
+  background: var(--jb-paper);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Baloo 2", sans-serif;
+  font-weight: 700;
+  color: #8a836a;
+  z-index: 1;
+}
+
+.jb-ladder--citizen .jb-rung--reached .jb-rung-marker {
+  border-color: var(--jb-marigold);
+  background: var(--jb-marigold);
+  color: #fff;
+}
+
+.jb-ladder--officer .jb-rung--reached .jb-rung-marker {
+  border-color: var(--jb-teal);
+  background: var(--jb-teal);
+  color: #fff;
+}
+
+.jb-rung-body {
+  flex: 1 1 auto;
+  padding-top: 4px;
+}
+
+.jb-rung-heading {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.jb-name-hi {
+  font-family: "Baloo 2", "Noto Sans Devanagari", sans-serif;
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: var(--jb-indigo);
+}
+
+.jb-name-en {
+  font-size: 0.85rem;
+  color: #7a745e;
+}
+
+.jb-rung-meta {
+  font-size: 0.85rem;
+  color: #6b6552;
+  margin: 4px 0 10px;
+}
+
+.jb-perks {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.jb-perks li {
+  font-size: 0.78rem;
+  padding: 4px 10px;
+  border-radius: 6px;
+  background: #fbf9f0;
+  border: 1px solid var(--jb-line);
+  color: var(--jb-ink);
+}
+
+.jb-ladder--citizen .jb-rung--reached .jb-perks li {
+  border-color: var(--jb-marigold-dark);
+}
+
+.jb-ladder--officer .jb-rung--reached .jb-perks li {
+  border-color: var(--jb-teal-dark);
+}
+
+.jb-footnote {
+  margin-top: 40px;
+  font-size: 0.8rem;
+  color: #8a836a;
+  border-top: 1px solid var(--jb-line);
+  padding-top: 16px;
+  max-width: 60ch;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .jb-tab {
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+}
